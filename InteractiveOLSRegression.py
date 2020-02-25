@@ -462,7 +462,10 @@ if startQ == '.csv':
     variableQ = input('Enter number of independent variables (1 - 5): ')
     if variableQ == '1':
        #plot first varibale realationship to dependent
+            y = datatable.loc[:,input('Enter name of dependent variable column: ')]
+            x1 = datatable.loc[:,input('Enter name of independent variable column: ')]
             resultsx1 = smf.ols('y ~ x1', data=datatable).fit()
+            print(resultsx1.summary())
             prstd, iv_l, iv_u = wls_prediction_std(resultsx1)
             fig = plt.figure(figsize=(7,6))
             gs = GridSpec(4,4)
